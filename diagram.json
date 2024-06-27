@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 4.7, "left": 14.2, "attrs": {} },
+    {
+      "type": "chip-temperature-sensor",
+      "id": "temperature",
+      "top": 1.02,
+      "left": -225.6,
+      "attrs": {}
+    },
+    {
+      "type": "chip-humidity-sensor",
+      "id": "humidity",
+      "top": 68.22,
+      "left": -196.8,
+      "attrs": {}
+    },
+    { "type": "wokwi-photoresistor-sensor", "id": "ldr", "top": 89.6, "left": 202.4, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd",
+      "top": 265.6,
+      "left": -32.8,
+      "attrs": { "pins": "i2c" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "esp:3V3", "temperature:VCC", "red", [ "h9.3", "v48", "h-364.8", "v-201.6" ] ],
+    [ "esp:GND.1", "temperature:GND", "black", [ "h18.9", "v67.1", "h-364.8", "v-201.6" ] ],
+    [ "esp:D34", "temperature:A0", "green", [ "h-9.6", "v-38.6" ] ],
+    [ "esp:3V3", "humidity:VCC", "red", [ "h9.3", "v48", "h-336", "v-124.8" ] ],
+    [ "esp:GND.1", "humidity:GND", "black", [ "h18.9", "v67.1", "h-336", "v-124.8" ] ],
+    [ "esp:D33", "humidity:A0", "green", [] ],
+    [ "ldr:VCC", "esp:3V3", "red", [ "h28.8", "v57.6" ] ],
+    [ "ldr:GND", "esp:GND.2", "black", [ "h19.2", "v114.8", "h-384", "v-76.7" ] ],
+    [ "ldr:AO", "esp:D32", "green", [ "h9.6", "v-135.1", "h-384", "v76.9" ] ],
+    [ "esp:3V3", "lcd:VCC", "red", [ "h38.1", "v86.4", "h-201.6", "v57.5" ] ],
+    [ "esp:GND.1", "lcd:GND", "black", [ "h28.5", "v86.3", "h-181.8", "v57.6" ] ],
+    [ "esp:D21", "lcd:SDA", "green", [ "h9.3", "v-77.2", "h-181.8", "v326.2" ] ],
+    [ "esp:D22", "lcd:SCL", "green", [ "h18.9", "v-57.9", "h-201", "v345.3" ] ]
+  ],
+  "dependencies": {}
+}
